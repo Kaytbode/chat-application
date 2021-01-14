@@ -5,14 +5,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./src/test"
+    "test": "nyc --reporter=html --reporter=text mocha ./src/test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "coveralls": "^3.1.0",
     "eslint": "^7.17.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
-    "mocha": "^8.2.1"
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0"
   }
 }

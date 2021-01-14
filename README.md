@@ -1,1 +1,2 @@
-[![Build Status](https://travis-ci.org/Kaytbode/chat-application.svg?branch=main)](https://travis-ci.org/Kaytbode/chat-application)
+[![Build Status](https://travis-ci.com/Kaytbode/chat-application.svg?branch=main)](https://travis-ci.com/Kaytbode/chat-application)
+[![Coverage Status](https://coveralls.io/repos/github/Kaytbode/chat-application/badge.svg?branch=main)](https://coveralls.io/github/Kaytbode/chat-application?branch=main)
