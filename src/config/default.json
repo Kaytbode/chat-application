@@ -1,0 +1,8 @@
+{
+    "dbConfig": {
+        "user": "chat",
+        "host": "localhost",
+        "database": "chat_dev",
+        "port": 5432  
+    }
+}
