@@ -1,2 +1,2 @@
 [![Build Status](https://travis-ci.com/Kaytbode/chat-application.svg?branch=main)](https://travis-ci.com/Kaytbode/chat-application)
-[![Coverage Status](https://coveralls.io/repos/github/Kaytbode/chat-application/badge.svg?branch=main)](https://coveralls.io/github/Kaytbode/chat-application?branch=main)
+[![codecov](https://codecov.io/gh/Kaytbode/chat-application/branch/main/graph/badge.svg?token=YQ3Y2IMSQH)](https://codecov.io/gh/Kaytbode/chat-application)
