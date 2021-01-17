@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha ./src/test",
+    "test": "set NODE_ENV=test&& nyc --reporter=html --reporter=text mocha ./src/test",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "author": "",
@@ -21,6 +21,7 @@
   "dependencies": {
     "config": "^3.3.3",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "pg": "^8.5.1"
   }
 }
