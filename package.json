@@ -6,11 +6,13 @@
   "main": "index.js",
   "scripts": {
     "test": "set NODE_ENV=test&& nyc --reporter=html --reporter=text mocha ./src/test",
-    "travis-test": "nyc --reporter=html --reporter=text mocha ./src/test"
+    "travis-test": "nyc --reporter=html --reporter=text mocha ./src/test",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
-  "author": "Kayode Oluborode",
+  "author": "bkaoluborode@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "codecov": "^3.8.1",
     "eslint": "^7.17.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
