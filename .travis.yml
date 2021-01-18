@@ -13,4 +13,4 @@ script:
   - npm run travis-test
   - codecov
 
-after_success: npm run coverage
+after_success: bash <(curl -s https://codecov.io/bash)
