@@ -6,4 +6,11 @@ node_js:
 env:
   - NODE_ENV=test
 
+before_install:
+  - npm install -g codecov
+
+script:
+  - npm run travis-test
+  - codecov
+
 after_success: npm run coverage

@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "set NODE_ENV=test&& nyc --reporter=html --reporter=text mocha ./src/test",
+    "travis-test": "nyc --reporter=html --reporter=text mocha ./src/test",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "author": "",
