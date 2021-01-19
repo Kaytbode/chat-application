@@ -1,23 +1,18 @@
-import insertUser from '../service/signup.js';
-import encryptPassword from '../middleware/encryption.js';
+import bcrypt from 'bcrypt';
+import db from '../database/index.js';
+import statuscode from '../service/statuscodes.js';
 
-/*
-    Object => Object
-    Inserts a user's validated details (email, encrypted password) into the database
-*/
-const signUp = async (req, res) => {
-    const { email, password } = req.body;
+const signUp = async (req, res, next) => {
+    const { email, password } = req.body; 
+    const text = 'INSERT INTO users(email, password) VALUES($1, $2) RETURNING *';
 
-    try {
-        const encrypted = await encryptPassword(password);
-        const result = await insertUser(email, encrypted);
-        
-        res.send({
-            // do something with result
-        });
-    } catch (error) {
-        // do something with error
-    }
+    const encrypted = await bcrypt.hash(password, Number(process.env.SALT_ROUNDS));
+    const { rows } = await db.query(text, [email, encrypted]);
+    
+    res.status(201).send({
+        message: statuscode.created,
+        user: rows[0]
+    });
 };
 
 export default signUp;

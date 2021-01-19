@@ -1,8 +1,5 @@
 import pg from 'pg';
 import config from 'config';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const { Pool } = pg;
 const dbConfig = config.get('dbConfig');
@@ -12,4 +9,8 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
 });
 
-export default pool;
+const db = {
+    query: (text, params) => pool.query(text, params)
+}
+
+export default db;

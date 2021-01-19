@@ -5,6 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./src/server.js",
     "test": "set NODE_ENV=test&& nyc --reporter=html --reporter=text mocha ./src/test",
     "travis-test": "nyc --reporter=html --reporter=text mocha ./src/test",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
@@ -24,6 +25,7 @@
     "config": "^3.3.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-validator": "^6.9.2",
     "pg": "^8.5.1"
   }
 }
