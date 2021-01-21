@@ -5,6 +5,6 @@ import errorHandler from '../middleware/errorhandler.js';
 
 const authRouter = express.Router();
 
-authRouter.post('/signup', validate(validationRules), signUp(req, res, next), errorHandler(err, req, res, next));
+authRouter.post('/signup', validate(validationRules), signUp, errorHandler);
 
 export default authRouter;

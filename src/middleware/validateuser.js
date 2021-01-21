@@ -1,5 +1,5 @@
 import { body, validationResult } from 'express-validator';
-import statuscode from '../service/statuscodes';
+import statusMessage from '../service/statuscodes.js';
 
 const validationRules = [
     body('email').isEmail(),
@@ -17,9 +17,9 @@ const validate = validations => {
         if (errors.isEmpty()) {
           return next();
         }
-    
+
         res.status(400).send({ 
-          message: statuscode.badRequest,
+          message: statusMessage.badRequest,
           errors: errors.array() 
         });
     };

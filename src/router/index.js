@@ -2,7 +2,7 @@ import authRouter from './auth.js';
 
 
 const mountRoutes = app => {
-    app.use('/api/vi/user/', authRouter)
+    app.use('/api/v1/user/', authRouter)
 }
 
 export default mountRoutes;

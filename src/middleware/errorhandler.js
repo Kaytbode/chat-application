@@ -1,8 +1,8 @@
-import statuscode from '../service/statuscodes.js';
+import statusMessage from '../service/statuscodes.js';
 
 const errorHandler = (err, req, res, next) => {
     res.status(500).send({
-        message: statuscode.serverError, 
+        message: statusMessage.serverError, 
         error: err 
     });
 }
