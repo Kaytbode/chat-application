@@ -3,7 +3,20 @@ import statusMessage from '../service/statuscodes.js';
 
 const validationRules = [
     body('email').isEmail(),
-    body('password').isLength({min: 6})
+    body('password').custom(({ length }) => {
+      if (length < 6){
+        throw new Error('Length of password is less than 6 characters');
+      }
+
+      return true;
+    }),
+    body('passwordConfirmation').custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('Password confirmation does not match password');
+      }
+
+      return true;
+    })
 ];
 
 const validate = validations => {
