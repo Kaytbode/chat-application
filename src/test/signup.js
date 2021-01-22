@@ -8,7 +8,7 @@ const expect = chai.expect;
 chai.use(chaihttp);
 
 describe('User Signup', () => {
-    describe('#Do not sign up user', () => {
+    describe('#user with incorrect values', () => {
         it('should not sign up user without an email', (done) => {
            const profileWithoutEmail = {
                email: '',
@@ -100,10 +100,10 @@ describe('User Signup', () => {
         });
     });
 
-    describe('#sign up user', () => {
+    describe('#user with correct input values', () => {
         it('should sign up user with email and password', (done) => {
             const profile = {
-                email: 'didk@yho.com',
+                email: 'didk@yhos.com',
                 password: 'jdjekekei',
                 passwordConfirmation: 'jdjekekei'
             };
@@ -113,6 +113,23 @@ describe('User Signup', () => {
             .send(profile)
             .end((err, res) => {
                 expect(res).to.have.status(201);
+                done();
+            });
+        });
+
+        it('should not sign up existing user', (done) => {
+            const profile = {
+                email: 'didk@yhos.com',
+                password: 'jdjekekei',
+                passwordConfirmation: 'jdjekekei'
+            };
+
+            chai.request(app)
+            .post('/api/v1/user/signup')
+            .send(profile)
+            .end((err, res) => {
+                expect(res).to.have.status(400);
+                expect(res.body.errors[0].msg).to.equal('Email already in use');
                 done();
             });
         });

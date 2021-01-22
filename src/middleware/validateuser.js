@@ -1,8 +1,19 @@
 import { body, validationResult } from 'express-validator';
 import statusMessage from '../service/statuscodes.js';
+import findUser from '../service/finduser.js';
 
-const validationRules = [
-    body('email').isEmail(),
+const validationRulesSignup = [
+    body('email')
+      .isEmail()
+      .custom( async (value) => {
+          const result = await findUser(value);
+
+          if(result.rows[0]) {
+            throw new Error('Email already in use');
+          }
+
+          return true;
+      }),
     body('password').custom(({ length }) => {
       if (length < 6){
         throw new Error('Length of password is less than 6 characters');
@@ -38,4 +49,4 @@ const validate = validations => {
     };
 };
 
-export { validationRules, validate };
+export { validationRulesSignup, validate };
