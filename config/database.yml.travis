@@ -1,0 +1,5 @@
+ dbConfig: 
+    user: chat
+    host: localhost
+    database: chat_test
+    port: 5432

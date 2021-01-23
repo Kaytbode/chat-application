@@ -5,8 +5,24 @@ node_js:
 
 env:
   - NODE_ENV=test
+  - DB_PASSWORD=chat
+  - SALT_ROUNDS=10
+  - PORT=3000
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c "create role chat with login password 'chat';" -U postgres
+  - psql -c 'create database chat_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
 
 script:
+  - npm run create-table
   - npm run travis-test
 
-after_success: npm run coverage
+after_success: 
+  - npm run coverage
+  - ./node_modules/.bin/codecov
+  - ls -l coverage/lcov.info
+
