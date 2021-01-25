@@ -4,10 +4,7 @@ node_js:
   - node
 
 env:
-  - NODE_ENV=test
-  - DB_PASSWORD=chat
-  - SALT_ROUNDS=10
-  - PORT=3000
+  - NODE_ENV=test DB_PASSWORD=chat SALT_ROUNDS=10
 
 services:
   - postgresql
