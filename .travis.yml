@@ -18,11 +18,12 @@ before_script:
   - cp config/database.yml.travis config/database.yml
 
 script:
+  - npm run build
   - npm run create-table
   - npm run travis-test
 
 after_success: 
   - npm run coverage
   - ./node_modules/.bin/codecov
-  - ls -l coverage/lcov.info
+
 

@@ -1,4 +1,3 @@
-import assert from 'assert';
 import chai from 'chai';
 import chaihttp from 'chai-http';
 import app from '../server.js';
