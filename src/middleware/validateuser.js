@@ -30,6 +30,17 @@ const validationRulesSignup = [
     })
 ];
 
+const validationRulesSignin = [
+  body('email').isEmail(),
+  body('password').custom(({ length }) => {
+    if (length < 6){
+      throw new Error('Length of password is less than 6 characters');
+    }
+
+    return true;
+  })
+];
+
 const validate = validations => {
     return async (req, res, next) => {
         for (let validation of validations) {
@@ -49,4 +60,4 @@ const validate = validations => {
     };
 };
 
-export { validationRulesSignup, validate };
+export { validationRulesSignup, validationRulesSignin, validate };
