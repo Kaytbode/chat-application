@@ -1,6 +1,10 @@
 import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
 import findUser from '../service/finduser.js';
 import statusMessage from '../service/statuscodes.js';
+
+dotenv.config();
 
 const signIn = async (req, res) => {
     try {
@@ -15,8 +19,11 @@ const signIn = async (req, res) => {
            throw new Error('Password is incorrect');
         }
         
+        const accessToken = jwt.sign(req.body, process.env.SECRET, { expiresIn: '1h' });
+
         return res.status(200).send({
-            message: statusMessage.success
+            message: statusMessage.success,
+            accessToken
         });
 
     } catch (error) {
