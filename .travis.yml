@@ -4,7 +4,7 @@ node_js:
   - node
 
 env:
-  - NODE_ENV=test DB_PASSWORD=chat SALT_ROUNDS=10
+  - NODE_ENV=test DB_PASSWORD=chat SALT_ROUNDS=10 SECRET=chat_application
 
 services:
   - postgresql
